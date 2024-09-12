@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tic Tac Toe</title>
+	<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+	<script type="module" src="module.js"></script>
+
+	<div class="table-container">
+		<table>
+			<tr>
+				<td class="cell" id="0"></td>
+				<td class="cell" id="1"></td>
+				<td class="cell" id="2"></td>
+				<td class="cell" id="3"></td>
+			</tr>
+			<tr>
+				<td class="cell" id="4"></td>
+				<td class="cell" id="5"></td>
+				<td class="cell" id="6"></td>
+				<td class="cell" id="7"></td>
+			</tr>
+			<tr>
+				<td class="cell" id="8"></td>
+				<td class="cell" id="9"></td>
+				<td class="cell" id="10"></td>
+				<td class="cell" id="11"></td>
+			</tr>
+			<tr>
+				<td class="cell" id="12"></td>
+				<td class="cell" id="13"></td>
+				<td class="cell" id="14"></td>
+				<td class="cell" id="15"></td>
+			</tr>
+		</table>
+	</div>
+
+
+	<div class="button-container">
+		<button class="button" onClick="isDelete()">Delete</button>
+		<button class="button" onClick="testMode()">Start Test</button>
+		<button class="button" onClick="start()">Start</button><br /><br />
+    </div>
+
+		<div class="gameresults">
+			<!--<h4>JÁTÉKÁLLÁS:</h4>-->
+	    <h4>GAME RESULTS:</h4>
+			<p class="players">X</p>
+			<p class="players">O</p>
+			<p class="players">Δ</p>
+			<br />
+			<input type="text" id="score_X" size="1" class="score_input"/>
+			<input type="text" id="score_O" size="1" class="score_input"/>
+			<input type="text" id="score_Δ" size="1" class="score_input"/>
+    </div>
+
+				<div class="gamemodes">
+				<!--<h4>JÁTÉKMÓDOK:</h4>-->
+        <h4>GAME MODES:</h4>
+				<input type="radio" id="pvp" name="mode" value="1" checked />
+				<label for="pvp">Player(X) vs AI(O) vs AI(Δ)</label><br />
+				<input type="radio" id="aivsai" name="mode" value="2" />
+				<label for="aivsai">AI(X) vs AI(O) vs AI(Δ)</label><br />
+				<input type="radio" id="test" name="mode" value="3" />
+				<label for="test">Test</label><br /><br />
+
+			</div>
+
+			<div class="gametime">
+				<!--<h4>JÁTÉKIDŐ:</h4>-->
+        <h4>PLAYING TIME:</h4>
+				<h4>(AI(X) vs AI(O) vs AI(Δ))</h4>
+					<input type="radio" id="oneGame" name="gameType" value="1" checked />
+					<!-- <label for="oneGame">Egy játék</label><br /> -->
+		      <label for="oneGame">One game</label><br />
+					<input type="radio" id="fullGame" name="gameType" value="2" />
+					<!-- <label for="fullGame">Teljes játék</label><br /><br /> -->
+		      <label for="fullGame">Full game</label><br /><br />
+    </div>
+
+					<div class="properties">
+				      <h4 data-text="PROPERTIES:"></h4>
+						<!----------------------------------XXXXXXXXXXXXXXXXXXXX-------------------->
+						<div class="property-section">
+							<div class="prop_X">
+								<h4>X Player</h4>
+								<input
+            type="radio"
+            id="Paranoid_X"
+            name="searchAlgorythm_X"
+            value="1"
+            checked
+          />
+								<label for="Paranoid_X">Paranoid</label>
+								<input
+          type="radio"
+          id="Maxn_X"
+          name="searchAlgorythm_X"
+          value="2" />
+								<label for="Maxn_X">Max^n</label>
+								<input
+            type="radio"
+            id="MP_Mix_X"
+            name="searchAlgorythm_X"
+            value="3"
+          />
+								<label for="MP_Mix_X">MP_Mix</label>
+
+								<br /><br />
+
+								<b>Td</b>
+								<input
+            type="range"
+            min="1"
+            max="3"
+            value="1"
+            class="slider"
+            id="Td_X"
+          />
+								<p>Value: <span id="Td_X_text"></span></p>
+								<br />
+
+								<b>To</b><input
+            type="range"
+            min="1"
+            max="3"
+            value="1"
+            class="slider"
+            id="To_X"
+          />
+								<p>Value: <span id="To_X_text"></span></p>
+								<br />
+
+								<div class="slidecontainer_X">
+									<h4>Depth</h4>
+									<input
+              type="range"
+              min="1"
+              max="5"
+              value="3"
+              class="slider"
+              id="depth_X"
+            />
+									<p>Value: <span id="depth_X_text"></span></p>
+
+								</div>
+							</div>
+
+							<!----------------------------------XXXXXXXXXXXXXXXXXXXX-------------------->
+
+							<!----------------------------------OOOOOOOOOOOOOOOOOOOO-------------------->
+							<div class="prop_O">
+								<h4>O Player</h4>
+								<input
+            type="radio"
+            id="Paranoid_O"
+            name="searchAlgorythm_O"
+            value="1"
+            checked
+          />
+								<label for="Paranoid_O">Paranoid</label>
+								<input
+          type="radio"
+          id="Maxn_O"
+          name="searchAlgorythm_O"
+          value="2" />
+								<label for="Maxn_O">Max^n</label>
+								<input
+          type="radio"
+          id="BRS"
+          name="searchAlgorythm_O"
+          value="3" />
+								<label for="BRS">BRS(O,Δ)</label>
+								<input
+            type="radio"
+            id="MP_Mix_O"
+            name="searchAlgorythm_O"
+            value="4"
+          />
+								<label for="MP_Mix_Δ">MP_Mix</label>
+								<br /><br />
+
+								<b>Td</b><input
+            type="range"
+            min="1"
+            max="3"
+            value="1"
+            class="slider"
+            id="Td_O"
+          />
+								<p>Value: <span id="Td_O_text"></span></p>
+								<br />
+								<b>To</b><input
+            type="range"
+            min="1"
+            max="3"
+            value="1"
+            class="slider"
+            id="To_O"
+          />
+								<p>Value: <span id="To_O_text"></span></p>
+								<br />
+
+								<div class="slidecontainer_X">
+									<h4>Depth</h4>
+									<input
+              type="range"
+              min="1"
+              max="5"
+              value="3"
+              class="slider"
+              id="depth_O"
+            />
+									<p>Value: <span id="depth_O_text"></span></p>
+
+								</div>
+							</div>
+
+							<!----------------------------------OOOOOOOOOOOOOOOOOOOO-------------------->
+
+							<!----------------------------------ΔΔΔΔΔΔΔΔΔΔΔΔΔΔΔΔΔΔΔΔ-------------------->
+
+							<div class="prop_Δ">
+								<h4>Δ Player</h4>
+								<input
+            type="radio"
+            id="Paranoid_Δ"
+            name="searchAlgorythm_Δ"
+            value="1"
+            checked
+          />
+								<label for="Paranoid_Δ">Paranoid</label>
+								<input type="radio" id="Maxn_Δ" name="searchAlgorythm_Δ" value="2" />
+								<label for="Maxn_Δ">Max^n</label>
+								<input
+            type="radio"
+            id="MP_Mix_Δ"
+            name="searchAlgorythm_Δ"
+            value="4"
+          />
+								<label for="MP_Mix_Δ">MP_Mix</label>
+								<br /><br />
+
+								<b>Td</b><input
+            type="range"
+            min="1"
+            max="3"
+            value="1"
+            class="slider"
+            id="Td_Δ"
+          />
+								<p>Value: <span id="Td_Δ_text"></span></p>
+								<br />
+
+								<b>To</b><input
+            type="range"
+            min="1"
+            max="3"
+            value="1"
+            class="slider"
+            id="To_Δ"
+          />
+								<p>Value: <span id="To_Δ_text"></span></p>
+								<br />
+
+								<div class="slidecontainer_X">
+									<h4>Depth</h4>
+									<input
+              type="range"
+              min="1"
+              max="5"
+              value="3"
+              class="slider"
+              id="depth_Δ"
+            />
+									<p>Value: <span id="depth_Δ_text"></span></p>
+
+								</div>
+							</div>
+						</div>
+						<!----------------------------------ΔΔΔΔΔΔΔΔΔΔΔΔΔΔΔΔΔΔΔΔ-------------------->
+
+
+					</div>
+
+					<script src="script.js"></script>
+</body>
+
+</html>
